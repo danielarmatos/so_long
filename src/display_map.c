@@ -14,8 +14,10 @@
 
 void	setup_sprites(t_data *data)
 {
+		ft_printf("\n======Ola02");
 	data->map->sprites->player01 = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/player01.xpm", &data->px, &data->px);	
+		ft_printf("\n======Ola03");
 	data->map->sprites->obstacle = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/obstacle01.xpm", &data->px, &data->px);
 	data->map->sprites->corner_tl = mlx_xpm_file_to_image(data->mlx_ptr,
@@ -36,6 +38,7 @@ void	setup_sprites(t_data *data)
 			"./images/collectible.xpm", &data->px, &data->px);
 	data->map->sprites->exit = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/exit.xpm", &data->px, &data->px);
+	ft_printf("\n======Ola03");
 }
 
 void	display_walls(t_data *data)
@@ -77,7 +80,9 @@ void	display_corners(t_data *data)
 
 void	display_map(t_data *data)
 {
+	ft_printf("\n======Ola");
 	setup_sprites(data);
+	
 	display_corners(data);
 	display_walls(data);
 	display_content(data);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_game.c                                      :+:      :+:    :+:   */
+/*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:44:43 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/03/04 19:09:12 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:13:01 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	move_player(t_data *data, int x2, int y2)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	char	c;
-	int	move;
+	int		move;
 
 	x = data->map->curr_pos_x;
 	y = data->map->curr_pos_y;
@@ -43,6 +43,27 @@ char	move_player(t_data *data, int x2, int y2)
 	}
 	return (c);
 }
+/*
+char	check_move(int key, t_data *data)
+{
+	char	c;
+	int		x;
+	int		y;
+
+	x = data->map->curr_pos_x;
+	y = data->map->curr_pos_y;
+	if ((key == 119 || key == 65362))
+		y = data->map->curr_pos_y - 1;
+	if ((key == 115 || key == 65364))
+		y = data->map->curr_pos_y + 1;
+	if ((key == 100 || key == 65363))
+		x = data->map->curr_pos_x + 1;
+	if ((key == 97 || key == 65361))
+		x = data->map->curr_pos_x - 1;
+	c = move_player(data, x, y);
+	return (c);
+}
+*/
 
 char	check_move(int key, t_data *data)
 {

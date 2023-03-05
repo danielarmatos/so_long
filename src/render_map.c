@@ -70,7 +70,8 @@ int	render_map(t_map *map)
 		free(data.win_ptr);
 		return (MLX_ERROR);
 	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, (map->width * data.px), (map->height * data.px));
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+//	data.img.mlx_img = mlx_new_image(data.mlx_ptr, (map->width * data.px), (map->height * data.px));
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	display_map (&data);
