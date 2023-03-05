@@ -23,9 +23,6 @@
 
 #define MLX_ERROR 1
 
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGHT 300
-
 typedef struct	s_point
 {
 	int			x;
@@ -34,25 +31,19 @@ typedef struct	s_point
 
 typedef struct	s_sprites
 {
-	char	*player01;
+	void	*player01;
+	void	*obstacle;
+	void	*wall02;
+	void	*collectible;
+	void	*exit;
+	void	*corner_tl;
+	void	*corner_bl;
+	void	*corner_tr;
+	void	*corner_br;
+	void	*wall_h;
+	void	*wall_p;
+	void	*bg;
 }				t_sprites;
-
-typedef struct	s_graphic
-{
-	char	*player01;
-	char	*obstacle;
-	char	*wall02;
-	char	*collectible;
-	char	*exit;
-	char	*corner_tl;
-	char	*corner_bl;
-	char	*corner_tr;
-	char	*corner_br;
-	char	*wall_h;
-	char	*wall_p;
-	char	*bg;
-	
-}				t_graphic;
 
 typedef struct	s_map
 {
@@ -66,7 +57,7 @@ typedef struct	s_map
 	int			curr_pos_x;
 	int			curr_pos_y;
 	int			collected_col;
-	t_graphic		graphic;
+	t_sprites		*sprites;
 }				t_map;
 
 typedef struct s_img
@@ -85,7 +76,6 @@ typedef struct s_data
 	t_img	img;
 	int		cur_img;
 	t_map	*map;
-	t_sprites		sprites;
 	int	px;
 }	t_data;
 

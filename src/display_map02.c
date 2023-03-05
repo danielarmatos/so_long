@@ -14,36 +14,34 @@
 
 void	display_obstacle(t_data *data, int x, int y)
 {
-	data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->map->graphic.obstacle, &data->px, &data->px);
 	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
+		data->win_ptr, data->map->sprites->obstacle, (x * data->px), (y * data->px));
 }
 
 void	display_collectible(t_data *data, int x, int y)
 {
-	data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->map->graphic.collectible, &data->px, &data->px);
 	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
+		data->win_ptr, data->map->sprites->collectible, (x * data->px), (y * data->px));
 }
 
 void	display_player(t_data *data, int x, int y)
 {
-	/*data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->map->graphic.player01, &data->px, &data->px);*/
 	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->sprites.player01, (x * data->px), (y * data->px));
+		data->win_ptr, data->map->sprites->player01, (x * data->px), (y * data->px));
 	data->map->curr_pos_x = x;
 	data->map->curr_pos_y = y;
 }
 
 void	display_bg(t_data *data, int x, int y)
 {
-	data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->map->graphic.bg, &data->px, &data->px);
 	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
+		data->win_ptr, data->map->sprites->bg, (x * data->px), (y * data->px));
+}
+
+void	display_exit(t_data *data, int x, int y)
+{
+	mlx_put_image_to_window(data->mlx_ptr,
+		data->win_ptr, data->map->sprites->exit, (x * data->px), (y * data->px));
 }
 
 void	display_content(t_data *data)
@@ -65,6 +63,8 @@ void	display_content(t_data *data)
 				display_collectible(data, j, i);
 			if (data->map->map_array[i][j] == '1')
 				display_obstacle(data, j, i);
+			if (data->map->map_array[i][j] == 'E')
+				display_exit(data, j, i);
 			j++;
 		}
 		i++;

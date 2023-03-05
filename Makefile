@@ -27,7 +27,7 @@ deps:
 	$(MAKE) -C ./libft
 	$(MAKE) -C ./minilibx
 $(NAME): $(OBJ) $(DEPS)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME) -g
 
 clean:
 	$(MAKE) $@ -C ./libft

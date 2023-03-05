@@ -29,23 +29,6 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	}
 }
 
-void	render_background(t_img *img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WINDOW_HEIGHT)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-		{
-			img_pix_put(img, j++, i, color);
-		}
-		++i;
-	}
-}
-
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
@@ -87,7 +70,7 @@ int	render_map(t_map *map)
 		free(data.win_ptr);
 		return (MLX_ERROR);
 	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, (map->width * data.px), (map->height * data.px));
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	display_map (&data);

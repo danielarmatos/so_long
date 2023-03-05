@@ -12,136 +12,73 @@
 
 #include "so_long.h"
 
-char	move_player_up(t_data *data)
+char	move_player(t_data *data, int x2, int y2)
 {
 	int	x;
 	int	y;
-	int	a;
+	char	c;
+	int	move;
 
 	x = data->map->curr_pos_x;
 	y = data->map->curr_pos_y;
-	a = data->map->map_array[y - 1][x];
-	if (data->map->map_array[y - 1][x] != '1')
+	c = data->map->map_array[y2][x2];
+	move = 1;
+	if (c == '1')
+		move = 0;
+	if (c == 'E')
+		if (data->map->collected_col != data->map->collectibles)
+			move = 0;
+	if (move == 1)
 	{
 		data->map->map_array[y][x] = '0';
-		if (data->map->map_array[y - 1][x] != 'E')
-			data->map->map_array[y - 1][x] = 'P';
-		data->map->curr_pos_y = y - 1;
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.bg, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr,
-			data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.player01, &data->px, &data->px);
+		if (data->map->map_array[y2][x2] != 'E')
+			data->map->map_array[y2][x2] = 'P';
+		data->map->curr_pos_x = x2;
+		data->map->curr_pos_y = y2;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img.mlx_img, ((x) * data->px), ((y - 1) * data->px));
+			data->map->sprites->bg, (x * data->px), (y * data->px));
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->player01,
+			(x2 * data->px), (y2 * data->px));
 	}
-	return (a);
+	return (c);
 }
 
-char	move_player_down(t_data *data)
+char	check_move(int key, t_data *data)
 {
-	int	x;
-	int	y;
-	int	a;
+	char	c;
 
-	x = data->map->curr_pos_x;
-	y = data->map->curr_pos_y;
-	a = data->map->map_array[y + 1][x];
-	if (data->map->map_array[y + 1][x] != '1')
-	{
-		data->map->map_array[y][x] = '0';
-		if (data->map->map_array[y + 1][x] != 'E')
-			data->map->map_array[y + 1][x] = 'P';
-		data->map->curr_pos_y = y + 1;
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.bg, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr,
-			data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.player01, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img.mlx_img, ((x) * data->px), ((y + 1) * data->px));
-	}
-	return (a);
-}
-
-char	move_player_left(t_data *data)
-{
-	int	x;
-	int	y;
-	int	a;
-
-	x = data->map->curr_pos_x;
-	y = data->map->curr_pos_y;
-	a = data->map->map_array[y][x - 1];
-	if (data->map->map_array[y][x - 1] != '1')
-	{
-		data->map->map_array[y][x] = '0';
-		if (data->map->map_array[y][x - 1] != 'E')
-			data->map->map_array[y][x - 1] = 'P';
-		data->map->curr_pos_x = x - 1;
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.bg, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr,
-			data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.player01, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img.mlx_img, ((x - 1) * data->px), ((y) * data->px));
-	}
-	return (a);
-}
-char	move_player_right(t_data *data)
-{
-	int	x;
-	int	y;
-	int	a;
-
-	x = data->map->curr_pos_x;
-	y = data->map->curr_pos_y;
-	a = data->map->map_array[y][x + 1];
-	if (data->map->map_array[y][x + 1] != '1')
-	{
-		data->map->map_array[y][x] = '0';
-		if (data->map->map_array[y][x + 1] != 'E')
-			data->map->map_array[y][x + 1] = 'P';
-		data->map->curr_pos_x = x + 1;
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.bg, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr,
-			data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
-		data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-				data->map->graphic.player01, &data->px, &data->px);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img.mlx_img, ((x + 1) * data->px), ((y) * data->px));
-	}
-	return (a);
+	if ((key == 119 || key == 65362))
+		c = move_player(data, data->map->curr_pos_x,
+				(data->map->curr_pos_y - 1));
+	if ((key == 115 || key == 65364))
+		c = move_player(data, data->map->curr_pos_x,
+				(data->map->curr_pos_y + 1));
+	if ((key == 100 || key == 65363))
+		c = move_player(data, (data->map->curr_pos_x + 1),
+				data->map->curr_pos_y);
+	if ((key == 97 || key == 65361))
+		c = move_player(data, (data->map->curr_pos_x - 1),
+				data->map->curr_pos_y);
+	return (c);
 }
 
 int	key_hook(int key, t_data *data)
 {
-	char	a;
-
-	if ((key == 119 || key == 65362))
-		a = move_player_up(data);
-	if ((key == 115 || key == 65364))
-		a = move_player_down(data);
-	if ((key == 100 || key == 65363))
-		a = move_player_right(data);
-	if ((key == 97 || key == 65361))
-		a = move_player_left(data);
-	ft_printf("\n%c\n", a);
-	if (a == 'C')
+	char	c;
+	c = check_move(key, data);
+	
+	if (c == 'C')
 	{
 		data->map->collected_col++;
 		if (data->map->collected_col == data->map->collectibles)
 			ft_printf("\nAll collectibles collected!!!!\n");
 	}
-	if (a == 'E')
+	if (c == 'E')
 	{
 		if (data->map->collected_col == data->map->collectibles)
 			ft_printf("\nFinished game successfully\n");
 	}
 	return (0);
 }
+

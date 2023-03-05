@@ -14,5 +14,5 @@
 
 void	destroy_map(t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->map->graphic.player01);
+	mlx_destroy_image(data->mlx_ptr, data->map->sprites->player01);
 }
