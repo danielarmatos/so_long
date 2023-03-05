@@ -14,8 +14,8 @@
 
 void	setup_sprites(t_data *data)
 {
-	data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->map->graphic.player01, &data->px, &data->px);
+	data->sprites.player01 = data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
+				"./images/player01.xpm", &data->px, &data->px);
 }
 
 void	display_walls(t_data *data)
@@ -70,6 +70,7 @@ void	display_corners(t_data *data)
 
 void	display_map(t_data *data)
 {
+	setup_sprites(data);
 	display_corners(data);
 	display_walls(data);
 	display_content(data);

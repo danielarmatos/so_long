@@ -14,9 +14,9 @@
 # define SO_LONG_H
 
 # include <unistd.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
-# include "minilibx/mlx.h"
+# include "../minilibx/mlx.h"
 
 #include <X11/keysym.h>
 #include <X11/X.h>
@@ -31,12 +31,12 @@ typedef struct	s_point
 	int			x;
 	int			y;
 }				t_point;
-/*
+
 typedef struct	s_sprites
 {
 	char	*player01;
 }				t_sprites;
-*/
+
 typedef struct	s_graphic
 {
 	char	*player01;
@@ -67,11 +67,7 @@ typedef struct	s_map
 	int			curr_pos_y;
 	int			collected_col;
 	t_graphic		graphic;
-	//t_sprites		sprites;
 }				t_map;
-
-
-
 
 typedef struct s_img
 {
@@ -89,6 +85,7 @@ typedef struct s_data
 	t_img	img;
 	int		cur_img;
 	t_map	*map;
+	t_sprites		sprites;
 	int	px;
 }	t_data;
 

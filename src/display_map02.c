@@ -30,10 +30,10 @@ void	display_collectible(t_data *data, int x, int y)
 
 void	display_player(t_data *data, int x, int y)
 {
-	data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->map->graphic.player01, &data->px, &data->px);
+	/*data->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
+			data->map->graphic.player01, &data->px, &data->px);*/
 	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->img.mlx_img, (x * data->px), (y * data->px));
+		data->win_ptr, data->sprites.player01, (x * data->px), (y * data->px));
 	data->map->curr_pos_x = x;
 	data->map->curr_pos_y = y;
 }

@@ -16,7 +16,7 @@ MLXFLAGS = -L ./minilibx -lm -lmlx -Ilmlx -lXext -lX11
 DEPS = minilibx/mlx.h libft/libft.a
 
 NAME = so_long
-SRC = $(filter-out $(shell find -type f -name '*_test.c'), $(shell find -type f -name '*.c'))
+SRC = $(filter-out $(shell find src -type f -name '*_test.c'), $(shell find src -type f -name '*.c'))
 OBJ = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a
