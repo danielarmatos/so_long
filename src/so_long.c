@@ -27,12 +27,13 @@ void	setup_map(t_map *map)
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
+	t_map	*map;
 	
+	map = malloc(sizeof(t_map));
 	if (argc == 2)
 	{
-		setup_map(&map);
-		if (validate_map(argv[1], &map) == 0)
+		setup_map(map);
+		if (validate_map(argv[1], map) == 0)
 		{
 			ft_printf("\n\nMap is INVALID!\n");
 			return (0);
@@ -40,7 +41,7 @@ int	main(int argc, char **argv)
 		else
 		{
 			ft_printf("\nMap is VALID!\n");
-			render_map(&map);
+			render_map(map);
 		}
 			
 	}

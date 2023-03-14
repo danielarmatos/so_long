@@ -14,6 +14,11 @@
 
 void	setup_sprites(t_data *data)
 {
+	t_sprites	*sprites;
+
+	sprites = malloc(sizeof(t_sprites));
+	data->map->sprites = sprites;
+
 		ft_printf("\n======Ola02");
 	data->map->sprites->player01 = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/player01.xpm", &data->px, &data->px);	
@@ -81,9 +86,11 @@ void	display_corners(t_data *data)
 void	display_map(t_data *data)
 {
 	ft_printf("\n======Ola");
+	ft_printf("\n+++%c", data->map->map_array[0][0]);
 	setup_sprites(data);
 	
 	display_corners(data);
 	display_walls(data);
 	display_content(data);
+	ft_printf("\n+++01+++%c", data->map->map_array[0][0]);
 }

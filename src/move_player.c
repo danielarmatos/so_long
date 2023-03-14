@@ -19,9 +19,13 @@ char	move_player(t_data *data, int x2, int y2)
 	char	c;
 	int		move;
 
+	ft_printf("\n===05\n");
 	x = data->map->curr_pos_x;
 	y = data->map->curr_pos_y;
+	ft_printf("\n===06\n");
+	ft_printf("%c", data->map->map_array[0][0]);
 	c = data->map->map_array[y2][x2];
+	ft_printf("\n===07\n");
 	move = 1;
 	if (c == '1')
 		move = 0;
@@ -54,21 +58,17 @@ char	check_move(int key, t_data *data)
 	y = data->map->curr_pos_y;
 	if ((key == 119 || key == 65362))
 		y = data->map->curr_pos_y - 1;
+	if ((key == 115 || key == 65364))x,
+				(data->map->curr_pos_y - 1));
 	if ((key == 115 || key == 65364))
-		y = data->map->curr_pos_y + 1;
-	if ((key == 100 || key == 65363))
-		x = data->map->curr_pos_x + 1;
-	if ((key == 97 || key == 65361))
-		x = data->map->curr_pos_x - 1;
-	c = move_player(data, x, y);
-	return (c);
 }
 */
 
 char	check_move(int key, t_data *data)
 {
 	char	c;
-
+	ft_printf("\n===04\n");
+	//ft_printf("%c", data->map->map_array[0][0]);
 	if ((key == 119 || key == 65362))
 		c = move_player(data, data->map->curr_pos_x,
 				(data->map->curr_pos_y - 1));
@@ -88,7 +88,8 @@ int	key_hook(int key, t_data *data)
 {
 	char	c;
 	c = check_move(key, data);
-	
+	ft_printf("\n+++03+++");
+	ft_printf("\n+++03+++%c", data->map->map_array[0][0]);
 	if (c == 'C')
 	{
 		data->map->collected_col++;

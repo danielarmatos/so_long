@@ -56,33 +56,36 @@ int	close_window(void)
 
 int	render_map(t_map *map)
 {
-	t_data	data;
+	t_data	*data;
 
-	data.map = map;
-	data.px = 50;
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
+	data = malloc(sizeof(t_data));
+	data->map = map;
+	data->px = 50;
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, (map->width * data.px),
-			(map->height * data.px), "Dani's So Long");
-	if (data.win_ptr == NULL)
+	data->win_ptr = mlx_new_window(data->mlx_ptr, (map->width * data->px),
+			(map->height * data->px), "Dani's So Long");
+	if (data->win_ptr == NULL)
 	{
-		free(data.win_ptr);
+		free(data->win_ptr);
 		return (MLX_ERROR);
 	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-//	data.img.mlx_img = mlx_new_image(data.mlx_ptr, (map->width * data.px), (map->height * data.px));
-	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
-			&data.img.line_len, &data.img.endian);
-	display_map (&data);
-	mlx_loop_hook(data.mlx_ptr, &render, &data);
-	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &close_window, NULL);
-	mlx_key_hook(data.win_ptr, key_hook, &data);
-	mlx_loop(data.mlx_ptr);
+//	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data->img.mlx_img = mlx_new_image(data->mlx_ptr, (map->width * data->px), (map->height * data->px));
+	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
+			&data->img.line_len, &data->img.endian);
+	ft_printf("\nola+++%c", data->map->map_array[0][0]);
+	display_map (data);
+	mlx_loop_hook(data->mlx_ptr, &render, data);
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_keypress, data);
+	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask, &close_window, NULL);
+	ft_printf("\n+++07+++%c", data->map->map_array[0][0]);
+	mlx_key_hook(data->win_ptr, &key_hook, data);
+	mlx_loop(data->mlx_ptr);
 	//destroy_map(&data);
-	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-	mlx_destroy_display(data.mlx_ptr);
-	free(data.mlx_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
 	return (0);
 }
