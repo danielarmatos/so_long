@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:21:44 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/01/28 19:22:59 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:17:01 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 # include <stdlib.h>
 # include "../minilibx/mlx.h"
 
-#include <X11/keysym.h>
-#include <X11/X.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 
-#define MLX_ERROR 1
+# define MLX_ERROR 1
 
 # define WINDOW_WIDTH 600
 # define WINDOW_HEIGHT 300
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int			x;
 	int			y;
 }				t_point;
 
-typedef struct	s_sprites
+typedef struct s_sprites
 {
 	void	*player01;
 	void	*obstacle;
@@ -46,28 +46,28 @@ typedef struct	s_sprites
 	void	*wall_h;
 	void	*wall_p;
 	void	*bg;
-}				t_sprites;
+}			t_sprites;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int			width;
 	int			height;
 	int			collectibles;
 	int			exit;
 	int			starting_pos;
-	char			**map_array;
+	char		**map_array;
 	int			image_size;
 	int			curr_pos_x;
 	int			curr_pos_y;
 	int			collected_col;
-	t_sprites		*sprites;
+	t_sprites	*sprites;
 }				t_map;
 
 typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
-	int		bpp; /* bits per pixel */
+	int		bpp;
 	int		line_len;
 	int		endian;
 }	t_img;
@@ -79,17 +79,18 @@ typedef struct s_data
 	t_img	img;
 	int		cur_img;
 	t_map	*map;
-	int	px;
+	int		px;
 }	t_data;
 
-int	validate_map(char *map_file, t_map *map);
-int validate_map02(t_map *map);
-t_map  validate_path(char **map, int height, int width);
-int	render_map(t_map *map);
-void    display_map(t_data *data);
-void    display_content(t_data *data);
-void    destroy_map(t_data *data);
+int		validate_map(char *map_file, t_map *map);
+int		validate_map02(t_map *map);
+t_map	validate_path(char **map, int height, int width);
+int		render_map(t_map *map);
+void	display_map(t_data *data);
+void	display_content(t_data *data);
+void	destroy_map(t_data *data);
 //void    update_game(t_data *data);
-int key_hook(int key, t_data *data);
+int		key_hook(int key, t_data *data);
+int		close_window(void);
 
 #endif

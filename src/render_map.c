@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:31:02 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/03/02 17:26:56 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:33:04 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (1);
-	//display_map (data);
 	//update_game (data);
 	return (0);
 }
@@ -71,21 +70,23 @@ int	render_map(t_map *map)
 		free(data->win_ptr);
 		return (MLX_ERROR);
 	}
-//	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	data->img.mlx_img = mlx_new_image(data->mlx_ptr, (map->width * data->px), (map->height * data->px));
+	data->img.mlx_img = mlx_new_image(data->mlx_ptr,
+			(map->width * data->px), (map->height * data->px));
 	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);
-	ft_printf("\nola+++%c", data->map->map_array[0][0]);
 	display_map (data);
 	mlx_loop_hook(data->mlx_ptr, &render, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_keypress, data);
-	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask, &close_window, NULL);
-	ft_printf("\n+++07+++%c", data->map->map_array[0][0]);
+	mlx_hook(data->win_ptr, DestroyNotify,
+		StructureNotifyMask, &close_window, NULL);
 	mlx_key_hook(data->win_ptr, &key_hook, data);
 	mlx_loop(data->mlx_ptr);
 	//destroy_map(&data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
+	//free(map->map_array);
+	free(map);
 	free(data->mlx_ptr);
+	free(data);
 	return (0);
 }

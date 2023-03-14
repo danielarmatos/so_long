@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:41:26 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/03/03 20:57:10 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:35:13 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 
 void	display_obstacle(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->map->sprites->obstacle, (x * data->px), (y * data->px));
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->obstacle, (x * data->px), (y * data->px));
 }
 
 void	display_collectible(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->map->sprites->collectible, (x * data->px), (y * data->px));
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->collectible, (x * data->px), (y * data->px));
 }
 
 void	display_player(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->map->sprites->player01, (x * data->px), (y * data->px));
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->player01, (x * data->px), (y * data->px));
 	data->map->curr_pos_x = x;
 	data->map->curr_pos_y = y;
 }
 
 void	display_bg(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->map->sprites->bg, (x * data->px), (y * data->px));
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->bg, (x * data->px), (y * data->px));
 }
 
 void	display_exit(t_data *data, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx_ptr,
-		data->win_ptr, data->map->sprites->exit, (x * data->px), (y * data->px));
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->exit, (x * data->px), (y * data->px));
 }
 
 void	display_content(t_data *data)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 1;
 	while (i < (data->map->height - 1))

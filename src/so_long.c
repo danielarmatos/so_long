@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:40:17 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/02/11 13:30:20 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:27:02 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	setup_map(t_map *map)
 int	main(int argc, char **argv)
 {
 	t_map	*map;
-	
+
 	map = malloc(sizeof(t_map));
 	if (argc == 2)
 	{
@@ -42,7 +42,6 @@ int	main(int argc, char **argv)
 		{
 			ft_printf("\nMap is VALID!\n");
 			render_map(map);
-		}
-			
+		}			
 	}
 }
