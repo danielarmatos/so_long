@@ -92,5 +92,6 @@ void	destroy_map(t_data *data);
 //void    update_game(t_data *data);
 int		key_hook(int key, t_data *data);
 int		close_window(void);
+void	display_exit(t_data *data, int x, int y);
 
 #endif

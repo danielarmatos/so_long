@@ -43,22 +43,6 @@ char	move_player(t_data *data, int x2, int y2)
 	}
 	return (c);
 }
-/*
-char	check_move(int key, t_data *data)
-{
-	char	c;
-	int		x;
-	int		y;
-
-	x = data->map->curr_pos_x;
-	y = data->map->curr_pos_y;
-	if ((key == 119 || key == 65362))
-		y = data->map->curr_pos_y - 1;
-	if ((key == 115 || key == 65364))x,
-				(data->map->curr_pos_y - 1));
-	if ((key == 115 || key == 65364))
-}
-*/
 
 char	check_move(int key, t_data *data)
 {

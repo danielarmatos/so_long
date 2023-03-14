@@ -38,12 +38,6 @@ void	display_bg(t_data *data, int x, int y)
 		data->map->sprites->bg, (x * data->px), (y * data->px));
 }
 
-void	display_exit(t_data *data, int x, int y)
-{
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		data->map->sprites->exit, (x * data->px), (y * data->px));
-}
-
 void	display_content(t_data *data)
 {
 	int	i;

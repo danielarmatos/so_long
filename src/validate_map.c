@@ -31,9 +31,10 @@ int	save_map(char *map_file, t_map *map)
 			break ;
 		map_array[i] = line;
 		i++;
-		//free(line);
 	}
 	map->map_array = map_array;
+	close(fd);
+	//free(line);
 	return (1);
 }
 
@@ -91,6 +92,7 @@ int	read_map(char *map_file, t_map *map)
 		map->height++;
 		free(line);
 	}
+	close(fd);
 	return (1);
 }
 

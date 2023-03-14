@@ -81,11 +81,12 @@ int	render_map(t_map *map)
 		StructureNotifyMask, &close_window, NULL);
 	mlx_key_hook(data->win_ptr, &key_hook, data);
 	mlx_loop(data->mlx_ptr);
-	//destroy_map(&data);
+	destroy_map(data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
-	//free(map->map_array);
-	free(map);
+	free(data->map->map_array);
+	free(data->map->sprites);
+	free(data->map);
 	free(data->mlx_ptr);
 	free(data);
 	return (0);
