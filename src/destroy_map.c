@@ -12,15 +12,15 @@
 
 #include "so_long.h"
 
-void	destroy_map_array(t_data *data)
+void	destroy_map_array(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	while (i < data->map->height)
+	while (i < map->height)
 	{
-		free (data->map->map_array[i]);
-		free (data->map->map_array_val[i]);
+		free (map->map_array[i]);
+		free (map->map_array_val[i]);
 		i++;
 	}
 }
@@ -38,5 +38,5 @@ void	destroy_map(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->bg);
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible);
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->exit);
-	destroy_map_array(data);
+	destroy_map_array(data->map);
 }

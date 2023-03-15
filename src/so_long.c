@@ -36,6 +36,10 @@ int	main(int argc, char **argv)
 		if (validate_map(argv[1], map) == 0)
 		{
 			ft_printf("\n\nMap is INVALID!\n");
+			destroy_map_array(map);
+			free(map->map_array);
+			free(map->map_array_val);
+			free(map);
 			return (0);
 		}
 		else

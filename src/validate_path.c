@@ -11,26 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-/*
-void	print_map(char **map)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	ft_printf("\n");
-	while(map[y])
-	{
-		x = 0;
-		while (map[y][x] != '\n')
-		{
-			ft_printf("%c", map[y][x]);
-			x++;
-		}
-		ft_printf("\n");
-		y++;
-	}
-}*/
 
 int	check_path(t_map *map, int x, int y)
 {	
@@ -78,19 +58,14 @@ int	validate_path(t_map *map)
 	t_point	start_pos;
 
 	start_pos = get_start_pos(map);
-	//print_map(map->map_array_val);
-	//print_map(map->map_array);
-	ft_printf("\nPos is: %i, %i", start_pos.x, start_pos.y);
 	map->validation_col = 0;
 	map->validation_exit = 0;
 	check_path(map, start_pos.x, start_pos.y);
-	//print_map(map->map_array_val);
-	//print_map(map->map_array);
 	if (map->validation_exit == 1 && map->validation_col == map->collectibles)
 	{
-		ft_printf("Map path is VALID!");
+		ft_printf("\nMap path is VALID!");
 		return (1);
 	}
-	ft_printf("Error: Map path is not valid!");
+	ft_printf("\nError: Map path is not valid!");
 	return (0);
 }
