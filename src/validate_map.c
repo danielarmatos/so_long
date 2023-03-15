@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int	save_map(char *map_file, t_map *map)
+char	**save_map(char *map_file, t_map *map)
 {
 	int		fd;
 	char	**map_array;
@@ -32,10 +32,8 @@ int	save_map(char *map_file, t_map *map)
 		map_array[i] = line;
 		i++;
 	}
-	map->map_array = map_array;
 	close(fd);
-	//free(line);
-	return (1);
+	return (map_array);
 }
 
 int	read_line(char *line)
@@ -98,12 +96,19 @@ int	read_map(char *map_file, t_map *map)
 
 int	validate_map(char *map_file, t_map *map)
 {
+	char	**map_array;
+	char	**map_array_val;
+
 	if (read_map(map_file, map) == 1)
 	{
 		ft_printf("\nWidth: %i\nHeight: %i\n", map->width, map->height);
-		if (save_map(map_file, map) == 1)
+		map_array = save_map(map_file, map);
+		map_array_val = save_map(map_file, map);
+		map->map_array = map_array;
+		map->map_array_val = map_array_val;
+		if (validate_map02(map) == 1)
 		{
-			if (validate_map02(map) == 1)
+			if (validate_path(map) == 1)
 				return (1);
 		}
 		else

@@ -56,9 +56,12 @@ typedef struct s_map
 	int			exit;
 	int			starting_pos;
 	char		**map_array;
+	char		**map_array_val;
 	int			image_size;
 	int			curr_pos_x;
 	int			curr_pos_y;
+	int			validation_col;
+	int			validation_exit;
 	int			collected_col;
 	t_sprites	*sprites;
 }				t_map;
@@ -84,7 +87,7 @@ typedef struct s_data
 
 int		validate_map(char *map_file, t_map *map);
 int		validate_map02(t_map *map);
-t_map	validate_path(char **map, int height, int width);
+int		validate_path(t_map *map);
 int		render_map(t_map *map);
 void	display_map(t_data *data);
 void	display_content(t_data *data);

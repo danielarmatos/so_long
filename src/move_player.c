@@ -12,23 +12,29 @@
 
 #include "so_long.h"
 
-char	move_player(t_data *data, int x2, int y2)
+int	check_move(t_data *data, int c)
 {
-	int		x;
-	int		y;
-	char	c;
 	int		move;
 
-	x = data->map->curr_pos_x;
-	y = data->map->curr_pos_y;
-	c = data->map->map_array[y2][x2];
 	move = 1;
 	if (c == '1')
 		move = 0;
 	if (c == 'E')
 		if (data->map->collected_col != data->map->collectibles)
 			move = 0;
-	if (move == 1)
+	return (move);
+}
+
+char	move_player(t_data *data, int x2, int y2)
+{
+	int		x;
+	int		y;
+	char	c;
+
+	x = data->map->curr_pos_x;
+	y = data->map->curr_pos_y;
+	c = data->map->map_array[y2][x2];
+	if (check_move(data, c) == 1)
 	{
 		data->map->map_array[y][x] = '0';
 		if (data->map->map_array[y2][x2] != 'E')
@@ -44,7 +50,7 @@ char	move_player(t_data *data, int x2, int y2)
 	return (c);
 }
 
-char	check_move(int key, t_data *data)
+char	check_key(int key, t_data *data)
 {
 	char	c;
 
@@ -67,7 +73,7 @@ int	key_hook(int key, t_data *data)
 {
 	char	c;
 
-	c = check_move(key, data);
+	c = check_key(key, data);
 	if (c == 'C')
 	{
 		data->map->collected_col++;

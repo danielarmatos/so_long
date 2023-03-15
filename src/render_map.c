@@ -85,6 +85,7 @@ int	render_map(t_map *map)
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->map->map_array);
+	free(data->map->map_array_val);
 	free(data->map->sprites);
 	free(data->map);
 	free(data->mlx_ptr);
