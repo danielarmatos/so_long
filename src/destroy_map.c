@@ -12,6 +12,12 @@
 
 #include "so_long.h"
 
+int	close_window(void)
+{
+	exit (0);
+	return (0);
+}
+
 void	destroy_map_array(t_map *map)
 {
 	int	i;

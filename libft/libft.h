@@ -78,7 +78,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-
 /*------------- Functions (ft_printf)---------------*/
 
 int		ft_putchar(char c);
@@ -89,7 +88,6 @@ int		ft_putnbr_base(unsigned int nbr, char *base);
 int		ft_putpointer(unsigned long n);
 char	*ft_utoa(unsigned int nbr);
 int		ft_printf(const char *str, ...);
-
 
 /*------------- Functions (get_next_line)---------------*/
 

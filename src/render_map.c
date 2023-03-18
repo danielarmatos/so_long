@@ -39,9 +39,10 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-int	close_window(void)
+int	render(t_data *data)
 {
-	exit (0);
+	if (data->win_ptr == NULL)
+		return (1);
 	return (0);
 }
 
@@ -76,6 +77,7 @@ int	render_map(t_map *map)
 	if (result == 0)
 		return (0);
 	display_map (data);
+	mlx_loop_hook(data->mlx_ptr, &render, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_keypress, data);
 	mlx_hook(data->win_ptr, DestroyNotify,
 		StructureNotifyMask, &close_window, NULL);

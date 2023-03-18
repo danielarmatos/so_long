@@ -17,7 +17,7 @@ MLXFLAGS = -L ./minilibx -lm -lmlx -Ilmlx -lXext -lX11
 DEPS = minilibx/mlx.h libft/libft.a
 
 NAME = so_long
-SRC = $(filter-out $(shell find src -type f -name '*_test.c'), $(shell find src -type f -name '*.c'))
+SRC = src/so_long.c src/destroy_map.c src/display_map.c src/validate_map.c src/display_map02.c src/move_player.c src/validate_path.c src/display_map03.c src/render_map.c src/validate_map02.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a

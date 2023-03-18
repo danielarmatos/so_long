@@ -53,6 +53,8 @@ int	read_line(char *line)
 			return (0);
 		}
 	}
+	if (line [i - 1] != '\n')
+		return (i);
 	return (i - 1);
 }
 
@@ -67,6 +69,7 @@ int	check_width(char *line, int width)
 		width = x;
 	if (width != x)
 	{
+		ft_printf("\nwidth: %i, x: %i\n", width, x);
 		ft_printf("\nError\n\033[1;31mWidth of the map is not constant.\033[0m\n");
 		return (0);
 	}
@@ -79,6 +82,10 @@ int	read_map(char *map_file, t_map *map)
 	char	*line;
 
 	fd = open(map_file, O_RDONLY);
+	if (fd < 0)
+		ft_printf("\nError\n\033[1;31mThe file could not be opened\033[0m\n");
+	if (fd < 0)
+		return (0);
 	while (1)
 	{
 		line = get_next_line(fd);

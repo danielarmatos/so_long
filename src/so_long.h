@@ -87,10 +87,10 @@ int		render_map(t_map *map);
 void	display_map(t_data *data);
 void	display_content(t_data *data);
 void	destroy_map(t_data *data);
-//void    update_game(t_data *data);
 int		key_hook(int key, t_data *data);
 int		close_window(void);
 void	display_exit(t_data *data, int x, int y);
 void	destroy_map_array(t_map *map);
+int		close_window(void);
 
 #endif
