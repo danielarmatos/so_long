@@ -49,7 +49,7 @@ int	read_line(char *line)
 			i++;
 		else
 		{
-			ft_printf("\n\nError: Map contains invalid characters\n");
+			ft_printf("\n\nError\n\033[1;31mMap contains invalid characters\033[0m\n");
 			return (0);
 		}
 	}
@@ -67,7 +67,7 @@ int	check_width(char *line, int width)
 		width = x;
 	if (width != x)
 	{
-		ft_printf("\nError: Width of the map is not constant.");
+		ft_printf("\nError\n\033[1;31mWidth of the map is not constant.\033[0m\n");
 		return (0);
 	}
 	return (width);
@@ -86,7 +86,11 @@ int	read_map(char *map_file, t_map *map)
 			break ;
 		map->width = check_width(line, map->width);
 		if (map->width == 0)
+		{
+			free(line);
+			close(fd);
 			return (0);
+		}
 		map->height++;
 		free(line);
 	}
@@ -101,7 +105,6 @@ int	validate_map(char *map_file, t_map *map)
 
 	if (read_map(map_file, map) == 1)
 	{
-		ft_printf("\nWidth: %i\nHeight: %i\n", map->width, map->height);
 		map_array = save_map(map_file, map);
 		map_array_val = save_map(map_file, map);
 		map->map_array = map_array;
@@ -112,7 +115,12 @@ int	validate_map(char *map_file, t_map *map)
 				return (1);
 		}
 		else
-			ft_printf("\nError saving map");
+		{
+			ft_printf("\nError saving map\n");
+			destroy_map_array(map);
+			free(map->map_array);
+			free(map->map_array_val);
+		}
 	}
 	return (0);
 }

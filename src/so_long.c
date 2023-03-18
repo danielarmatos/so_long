@@ -25,20 +25,47 @@ void	setup_map(t_map *map)
 	map->collected_col = 0;
 }
 
+int	check_file_type(char *map_file)
+{
+	int		i;
+	int		j;
+	char	*ber;
+
+	i = 0;
+	j = 3;
+	ber = ".ber";
+	while (map_file[i])
+		i++;
+	i--;
+	while (j >= 0)
+	{
+		if (map_file[i] != ber[j])
+			return (0);
+		j--;
+		i--;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	map = malloc(sizeof(t_map));
 	if (argc == 2)
 	{
+		if (check_file_type(argv[1]) == 0)
+		{
+			ft_printf("\nError\n\033[1;31mMap file type is INVALID!\033[0m\n");
+			return (0);
+		}
+		map = malloc(sizeof(t_map));
 		setup_map(map);
 		if (validate_map(argv[1], map) == 0)
 		{
-			ft_printf("\n\nMap is INVALID!\n");
-			destroy_map_array(map);
-			free(map->map_array);
-			free(map->map_array_val);
+			ft_printf("\nMap is INVALID!\n");
+			//destroy_map_array(map);
+			//free(map->map_array);
+			//free(map->map_array_val);
 			free(map);
 			return (0);
 		}
@@ -48,4 +75,6 @@ int	main(int argc, char **argv)
 			render_map(map);
 		}			
 	}
+	else
+		ft_printf("\nError\n\033[1;31mNumber of Arguments is INVALID!\033[0m\n");
 }

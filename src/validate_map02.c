@@ -42,24 +42,21 @@ int	check_column(char **map, int x, int height)
 
 int	check_characters(t_map *map)
 {
-	ft_printf("\nExit: %i\nCollectibles: %i\n", map->exit, map->collectibles);
-	ft_printf("Starting Pos: %i\n", map->starting_pos);
 	if (map->exit > 1 || map->starting_pos > 1)
 	{
-		ft_printf("\nERROR: Map contains duplicated characters (exit/start)");
+		ft_printf("\nError\n\033[1;31mMap contains duplicated characters (exit/start)\033[0m\n");
 		return (0);
 	}
 	if (map->exit < 1 || map->starting_pos < 1)
 	{
-		ft_printf("\nERROR: No exit/start characters");
+		ft_printf("\nError\n\033[1;31mNo exit/start characters\033[0m\n");
 		return (0);
 	}
 	if (map->collectibles < 1)
 	{
-		ft_printf("\nERROR: No colectible characters");
+		ft_printf("\nError\n\033[1;31mNo colectible characters\033[0m\n");
 		return (0);
 	}
-	ft_printf("\nCharacters are VALID!\n");
 	return (1);
 }
 
@@ -92,14 +89,25 @@ int	validate_map02(t_map *map)
 	if (check_characters(map) == 1)
 	{
 		if (check_row(map->map_array[0]) == 0)
+		{
+			ft_printf("\nError\n\033[1;31mMap is not surrounded by walls\033[0m\n");
 			return (0);
+		}
 		if (check_row(map->map_array[map->height - 1]) == 0)
+		{
+			ft_printf("\nError\n\033[1;31mMap is not surrounded by walls\033[0m\n");
 			return (0);
+		}
 		if (check_column(map->map_array, 0, map->height) == 0)
+		{
+			ft_printf("\nError\n\033[1;31mMap is not surrounded by walls\033[0m\n");
 			return (0);
+		}
 		if (check_column(map->map_array, (map->width - 1), map->height) == 0)
+		{
+			ft_printf("\nError\n\033[1;31mMap is not surrounded by walls\033[0m\n");
 			return (0);
-		ft_printf("\nWalls are VALID!\n");
+		}
 		return (1);
 	}
 	return (0);

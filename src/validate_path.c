@@ -63,9 +63,8 @@ int	validate_path(t_map *map)
 	check_path(map, start_pos.x, start_pos.y);
 	if (map->validation_exit == 1 && map->validation_col == map->collectibles)
 	{
-		ft_printf("\nMap path is VALID!");
 		return (1);
 	}
-	ft_printf("\nError: Map path is not valid!");
+	ft_printf("\nError\n\033[1;31mMap path is not valid!\033[0m\n");
 	return (0);
 }

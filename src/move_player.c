@@ -30,12 +30,16 @@ char	move_player(t_data *data, int x2, int y2)
 	int		x;
 	int		y;
 	char	c;
+	static int	mov_count;
 
+	if (!mov_count)
+		mov_count = 0;
 	x = data->map->curr_pos_x;
 	y = data->map->curr_pos_y;
 	c = data->map->map_array[y2][x2];
 	if (check_move(data, c) == 1)
 	{
+		ft_printf("\nNumber of movements: %i\n", ++mov_count);
 		data->map->map_array[y][x] = '0';
 		if (data->map->map_array[y2][x2] != 'E')
 			data->map->map_array[y2][x2] = 'P';
@@ -78,13 +82,13 @@ int	key_hook(int key, t_data *data)
 	{
 		data->map->collected_col++;
 		if (data->map->collected_col == data->map->collectibles)
-			ft_printf("\nAll collectibles collected!!!!\n");
+			ft_printf("\nAll collectibles collected!\n");
 	}
 	if (c == 'E')
 	{
 		if (data->map->collected_col == data->map->collectibles)
 		{
-			ft_printf("\nFinished game successfully\n");
+			ft_printf("\n\033[0;32mFinished game successfully!!!\033[0m\n");
 			close_window();
 		}
 	}
