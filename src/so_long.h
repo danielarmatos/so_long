@@ -21,11 +21,6 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define MLX_ERROR 1
-
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGHT 300
-
 typedef struct s_point
 {
 	int			x;

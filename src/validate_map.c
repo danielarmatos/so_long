@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:10:54 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/03/02 19:56:53 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:25:28 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	read_line(char *line)
 			i++;
 		else
 		{
-			ft_printf("\n\nError\n\033[1;31mMap contains invalid characters\033[0m\n");
+			ft_printf("\n\nError\n\033[1;31mMap has invalid characters\033[0m\n");
 			return (0);
 		}
 	}
@@ -114,13 +114,9 @@ int	validate_map(char *map_file, t_map *map)
 			if (validate_path(map) == 1)
 				return (1);
 		}
-		else
-		{
-			ft_printf("\nError saving map\n");
-			destroy_map_array(map);
-			free(map->map_array);
-			free(map->map_array_val);
-		}
+		destroy_map_array(map);
+		free(map->map_array);
+		free(map->map_array_val);
 	}
 	return (0);
 }

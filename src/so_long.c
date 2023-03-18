@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:40:17 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/03/14 18:27:02 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:15:48 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,13 @@ int	main(int argc, char **argv)
 		if (validate_map(argv[1], map) == 0)
 		{
 			ft_printf("\nMap is INVALID!\n");
-			//destroy_map_array(map);
-			//free(map->map_array);
-			//free(map->map_array_val);
 			free(map);
 			return (0);
 		}
 		else
 		{
-			ft_printf("\nMap is VALID!\n");
-			render_map(map);
+			if (render_map(map) == 0)
+				ft_printf("\nError\n\033[1;31mError rendering map!\033[0m\n");
 		}			
 	}
 	else

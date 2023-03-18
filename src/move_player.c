@@ -6,7 +6,7 @@
 /*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:44:43 by dreis-ma          #+#    #+#             */
-/*   Updated: 2023/03/14 18:13:01 by dreis-ma         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:16:30 by dreis-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	check_move(t_data *data, int c)
 
 char	move_player(t_data *data, int x2, int y2)
 {
-	int		x;
-	int		y;
-	char	c;
+	int			x;
+	int			y;
+	char		c;
 	static int	mov_count;
 
 	if (!mov_count)
