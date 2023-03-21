@@ -24,7 +24,7 @@ int	check_move(t_data *data, int c)
 			move = 0;
 	return (move);
 }
-
+/*
 char	move_player(t_data *data, int x2, int y2)
 {
 	int			x;
@@ -47,6 +47,48 @@ char	move_player(t_data *data, int x2, int y2)
 		data->map->curr_pos_y = y2;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->map->sprites->bg, (x * data->px), (y * data->px));
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->player01,
+			(x2 * data->px), (y2 * data->px));
+	}
+	return (c);
+}*/
+
+char	move_player(t_data *data, int x2, int y2)
+{
+	int			x;
+	int			y;
+	char		c;
+	static int	mov_count;
+
+	if (!mov_count)
+		mov_count = 0;
+	x = data->map->curr_pos_x;
+	y = data->map->curr_pos_y;
+	c = data->map->map_array[y2][x2];
+	if (c != '1')
+	{
+		ft_printf("\nNumber of movements: %i\n", ++mov_count);
+	//move_player02(data, x, y);
+	
+		if (data->map->map_array[y][x] == 'L')
+		{
+			data->map->map_array[y][x] = 'E';
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->map->sprites->exit, (x * data->px), (y * data->px));
+		}
+		else
+		{
+			data->map->map_array[y][x] = '0';
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->map->sprites->bg, (x * data->px), (y * data->px));
+		}
+		if (data->map->map_array[y2][x2] != 'E')
+			data->map->map_array[y2][x2] = 'P';
+		else
+			data->map->map_array[y2][x2] = 'L';
+		data->map->curr_pos_x = x2;
+		data->map->curr_pos_y = y2;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->map->sprites->player01,
 			(x2 * data->px), (y2 * data->px));
