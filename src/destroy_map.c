@@ -44,5 +44,6 @@ void	destroy_map(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->bg);
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible);
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->exit);
+	mlx_destroy_image(data->mlx_ptr, data->map->sprites->exit02);
 	destroy_map_array(data->map);
 }

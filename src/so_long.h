@@ -34,6 +34,7 @@ typedef struct s_sprites
 	void	*wall02;
 	void	*collectible;
 	void	*exit;
+	void	*exit02;
 	void	*corner_tl;
 	void	*corner_bl;
 	void	*corner_tr;

@@ -36,6 +36,8 @@ void	setup_sprites(t_data *data)
 			"./images/collectible.xpm", &data->px, &data->px);
 	data->map->sprites->exit = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/exit.xpm", &data->px, &data->px);
+	data->map->sprites->exit02 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/exit02.xpm", &data->px, &data->px);
 }
 
 void	display_walls(t_data *data)
