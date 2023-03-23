@@ -28,6 +28,14 @@ void	setup_sprites02(t_data *data)
 			"./images/exit03.xpm", &data->px, &data->px);
 	data->map->sprites->exit_player = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/exit_player.xpm", &data->px, &data->px);
+	data->map->sprites->player_up = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/player_up.xpm", &data->px, &data->px);
+	data->map->sprites->player_down = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/player_down.xpm", &data->px, &data->px);
+	data->map->sprites->player_left = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/player_left.xpm", &data->px, &data->px);
+	data->map->sprites->player_right = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/player_right.xpm", &data->px, &data->px);
 }
 
 void	setup_sprites(t_data *data)

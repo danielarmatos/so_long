@@ -23,6 +23,8 @@ void	setup_map(t_map *map)
 	map->curr_pos_x = 0;
 	map->curr_pos_y = 0;
 	map->collected_col = 0;
+	map->exit_pos_x = 0;
+	map->exit_pos_y = 0;
 }
 
 int	check_file_type(char *map_file)

@@ -28,7 +28,7 @@ void	move_player02(t_data *data, int x, int y)
 	}
 }
 
-char	move_player(t_data *data, int x2, int y2)
+char	move_player(t_data *data, int x2, int y2, char direction)
 {
 	int			x;
 	int			y;
@@ -50,9 +50,23 @@ char	move_player(t_data *data, int x2, int y2)
 			data->map->map_array[y2][x2] = 'L';
 		data->map->curr_pos_x = x2;
 		data->map->curr_pos_y = y2;
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->map->sprites->player01,
-			(x2 * data->px), (y2 * data->px));
+		if (direction == 'u')
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->map->sprites->player_up,
+				(x2 * data->px), (y2 * data->px));
+		if (direction == 'd')
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->map->sprites->player_down,
+				(x2 * data->px), (y2 * data->px));
+		if (direction == 'l')
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->map->sprites->player_left,
+				(x2 * data->px), (y2 * data->px));
+		if (direction == 'r')
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->map->sprites->player_right,
+				(x2 * data->px), (y2 * data->px));
+		
 	}
 	return (c);
 }
@@ -63,16 +77,16 @@ char	check_key(int key, t_data *data)
 
 	if ((key == 119 || key == 65362))
 		c = move_player(data, data->map->curr_pos_x,
-				(data->map->curr_pos_y - 1));
+				(data->map->curr_pos_y - 1), 'u');
 	if ((key == 115 || key == 65364))
 		c = move_player(data, data->map->curr_pos_x,
-				(data->map->curr_pos_y + 1));
+				(data->map->curr_pos_y + 1), 'd');
 	if ((key == 100 || key == 65363))
 		c = move_player(data, (data->map->curr_pos_x + 1),
-				data->map->curr_pos_y);
+				data->map->curr_pos_y, 'r');
 	if ((key == 97 || key == 65361))
 		c = move_player(data, (data->map->curr_pos_x - 1),
-				data->map->curr_pos_y);
+				data->map->curr_pos_y, 'l');
 	return (c);
 }
 

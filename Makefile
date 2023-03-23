@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-#CFLAGS = -Wall -Wextra -Werror -g
+#CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -L ./minilibx -lm -lmlx -Ilmlx -lXext -lX11
 DEPS = minilibx/mlx.h libft/libft.a
 

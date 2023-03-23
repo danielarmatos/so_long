@@ -48,6 +48,10 @@ typedef struct s_sprites
 	void	*wall_h;
 	void	*wall_p;
 	void	*bg;
+	void	*player_up;
+	void	*player_down;
+	void	*player_left;
+	void	*player_right;
 }			t_sprites;
 
 typedef struct s_map
@@ -65,6 +69,8 @@ typedef struct s_map
 	int			validation_col;
 	int			validation_exit;
 	int			collected_col;
+	int			exit_pos_x;
+	int			exit_pos_y;
 	t_sprites	*sprites;
 }				t_map;
 
@@ -99,5 +105,6 @@ int		close_window(void);
 void	display_exit(t_data *data, int x, int y);
 void	destroy_map_array(t_map *map);
 int		close_window(void);
+void	exit_sprite_anim(t_data *data);
 
 #endif

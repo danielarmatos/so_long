@@ -41,8 +41,19 @@ int	handle_keypress(int keysym, t_data *data)
 
 int	render(t_data *data)
 {
+	static int	i;
+
+	if (!i)
+		i = 0;
 	if (data->win_ptr == NULL)
 		return (1);
+	if ((data->map->collected_col == data->map->collectibles) && i == 10000)
+	{
+			exit_sprite_anim(data);
+	}
+	i++;
+	if (i == 10001)
+		i = 0;
 	return (0);
 }
 
