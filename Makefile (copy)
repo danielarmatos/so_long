@@ -17,12 +17,13 @@ MLXFLAGS = -L ./minilibx -lm -lmlx -Ilmlx -lXext -lX11
 DEPS = minilibx/mlx.h libft/libft.a
 
 NAME = so_long
-BONUS_NAME = so_long_bonus
 
 SRC = src/so_long.c src/destroy_map.c src/display_map.c src/validate_map.c src/display_map02.c src/move_player.c src/validate_path.c src/display_map03.c src/render_map.c src/validate_map02.c
+
 OBJ = $(SRC:.c=.o)
 
 BONUS = src_bonus/so_long.c src_bonus/destroy_map.c src_bonus/display_map.c src_bonus/validate_map.c src_bonus/display_map02.c src_bonus/move_player.c src_bonus/validate_path.c src_bonus/display_map03.c src_bonus/render_map.c src_bonus/validate_map02.c
+
 BONUS_OBJ = $(BONUS:.c=.o)
 
 LIBFT = libft/libft.a
@@ -43,14 +44,9 @@ clean:
 fclean: clean
 	$(MAKE) $@ -C ./libft
 	@rm -rf $(NAME)
-
-bonus: bonus_deps $(BONUS_NAME)
-
-bonus_deps:
-	$(MAKE) -C ./libft
-	$(MAKE) -C ./minilibx
-$(BONUS_NAME): $(BONUS_OBJ) $(DEPS)
-	$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT) $(MLXFLAGS) -o $(BONUS_NAME) -g
+	
+bonus: $(OBJ) $(BONUS_OBJ) $(DEPS)
+	@ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
 
 re: fclean all
 	$(MAKE) re -C ./libft

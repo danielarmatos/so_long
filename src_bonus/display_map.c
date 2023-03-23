@@ -1,0 +1,109 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dreis-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/03 17:05:25 by dreis-ma          #+#    #+#             */
+/*   Updated: 2023/03/14 18:30:40 by dreis-ma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+void	setup_sprites02(t_data *data)
+{
+	data->map->sprites->collectible02 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/collectible02.xpm", &data->px, &data->px);
+	data->map->sprites->collectible03 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/collectible03.xpm", &data->px, &data->px);
+	data->map->sprites->collectible04 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/collectible04.xpm", &data->px, &data->px);
+	data->map->sprites->exit01 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/exit01.xpm", &data->px, &data->px);
+	data->map->sprites->exit02 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/exit02.xpm", &data->px, &data->px);
+	data->map->sprites->exit03 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/exit03.xpm", &data->px, &data->px);
+	data->map->sprites->exit_player = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/exit_player.xpm", &data->px, &data->px);
+}
+
+void	setup_sprites(t_data *data)
+{
+	data->map->sprites->player01 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/player01.xpm", &data->px, &data->px);
+	data->map->sprites->obstacle = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/obstacle01.xpm", &data->px, &data->px);
+	data->map->sprites->corner_tl = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/corner_tl.xpm", &data->px, &data->px);
+	data->map->sprites->corner_bl = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/corner_bl.xpm", &data->px, &data->px);
+	data->map->sprites->corner_tr = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/corner_tr.xpm", &data->px, &data->px);
+	data->map->sprites->corner_br = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/corner_br.xpm", &data->px, &data->px);
+	data->map->sprites->wall_h = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/wall_h.xpm", &data->px, &data->px);
+	data->map->sprites->wall_p = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/wall_p.xpm", &data->px, &data->px);
+	data->map->sprites->bg = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/background.xpm", &data->px, &data->px);
+	data->map->sprites->collectible = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/collectible.xpm", &data->px, &data->px);
+	data->map->sprites->exit = mlx_xpm_file_to_image(data->mlx_ptr,
+			"./images/exit.xpm", &data->px, &data->px);
+	setup_sprites02(data);
+}
+
+void	display_walls(t_data *data)
+{
+	int	i;
+
+	i = 1;
+	while (i < (data->map->width - 1))
+	{
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->win_ptr, data->map->sprites->wall_h, (i * data->px), 0);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->wall_h,
+			(i * data->px), ((data->map->height - 1) * data->px));
+		i++;
+	}
+	i = 1;
+	while (i < (data->map->height - 1))
+	{
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->win_ptr, data->map->sprites->wall_p, 0, (i * data->px));
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->wall_p,
+			((data->map->width - 1) * data->px), (i * data->px));
+		i++;
+	}
+}
+
+void	display_corners(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx_ptr,
+		data->win_ptr, data->map->sprites->corner_tl, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->corner_tr, ((data->map->width - 1) * data->px), 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->corner_bl, 0, ((data->map->height - 1) * data->px));
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->map->sprites->corner_br, ((data->map->width - 1) * data->px),
+		((data->map->height - 1) * data->px));
+}
+
+void	display_map(t_data *data)
+{
+	t_sprites	*sprites;
+
+	sprites = malloc(sizeof(t_sprites));
+	data->map->sprites = sprites;
+	setup_sprites(data);
+	display_corners(data);
+	display_walls(data);
+	display_content(data);
+}
