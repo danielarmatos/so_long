@@ -49,7 +49,7 @@ int	render(t_data *data)
 int	init_render_map(t_map *map, t_data *data)
 {
 	data->map = map;
-	data->px = 50;
+	data->px = 52;
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (0);
