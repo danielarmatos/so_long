@@ -24,7 +24,7 @@ void	display_collectible(t_data *data, int x, int y)
 
 	if (!i)
 		i = 1;
-	ft_printf("\ni: %i\n", i);
+	//ft_printf("\ni: %i\n", i);
 	if (i == 1)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,

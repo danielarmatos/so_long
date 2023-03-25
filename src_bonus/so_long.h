@@ -52,6 +52,14 @@ typedef struct s_sprites
 	void	*player_down;
 	void	*player_left;
 	void	*player_right;
+	void	*collectible01_02;
+	void	*collectible01_03;
+	void	*collectible02_02;
+	void	*collectible02_03;
+	void	*collectible03_02;
+	void	*collectible03_03;
+	void	*collectible04_02;
+	void	*collectible04_03;
 }			t_sprites;
 
 typedef struct s_map
@@ -106,5 +114,7 @@ void	display_exit(t_data *data, int x, int y);
 void	destroy_map_array(t_map *map);
 int		close_window(void);
 void	exit_sprite_anim(t_data *data);
+void	setup_sprites(t_data *data);
+void	collectible_sprite_anim(t_data *data);
 
 #endif

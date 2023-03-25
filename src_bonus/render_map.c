@@ -48,9 +48,9 @@ int	render(t_data *data)
 	if (data->win_ptr == NULL)
 		return (1);
 	if ((data->map->collected_col == data->map->collectibles) && i == 10000)
-	{
 			exit_sprite_anim(data);
-	}
+	if (i == 10000)
+			collectible_sprite_anim(data);
 	i++;
 	if (i == 10001)
 		i = 0;

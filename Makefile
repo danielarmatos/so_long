@@ -22,7 +22,7 @@ BONUS_NAME = so_long_bonus
 SRC = src/so_long.c src/destroy_map.c src/display_map.c src/validate_map.c src/display_map02.c src/move_player.c src/validate_path.c src/display_map03.c src/render_map.c src/validate_map02.c
 OBJ = $(SRC:.c=.o)
 
-BONUS = src_bonus/so_long.c src_bonus/destroy_map.c src_bonus/display_map.c src_bonus/validate_map.c src_bonus/display_map02.c src_bonus/move_player.c src_bonus/validate_path.c src_bonus/display_map03.c src_bonus/render_map.c src_bonus/validate_map02.c
+BONUS = src_bonus/so_long.c src_bonus/destroy_map.c src_bonus/display_map.c src_bonus/validate_map.c src_bonus/display_map02.c src_bonus/move_player.c src_bonus/validate_path.c src_bonus/display_map03.c src_bonus/render_map.c src_bonus/validate_map02.c src_bonus/setup_sprites.c
 BONUS_OBJ = $(BONUS:.c=.o)
 
 LIBFT = libft/libft.a
