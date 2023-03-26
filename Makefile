@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+#CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -L ./minilibx -lm -lmlx -Ilmlx -lXext -lX11
 DEPS = minilibx/mlx.h libft/libft.a
 
@@ -42,7 +42,7 @@ clean:
 
 fclean: clean
 	$(MAKE) $@ -C ./libft
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(BONUS_NAME)
 
 bonus: bonus_deps $(BONUS_NAME)
 

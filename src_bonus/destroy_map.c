@@ -27,7 +27,7 @@ void	destroy_map_array(t_map *map)
 	{
 		free (map->map_array[i]);
 		free
-		 (map->map_array_val[i]);
+		(map->map_array_val[i]);
 		i++;
 	}
 }
@@ -45,15 +45,6 @@ void	destroy_images(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->player_down);
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->player_left);
 	mlx_destroy_image(data->mlx_ptr, data->map->sprites->player_right);
-
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible01_02);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible01_03);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible02_02);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible02_03);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible03_02);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible03_03);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible04_02);
-	mlx_destroy_image(data->mlx_ptr, data->map->sprites->collectible04_03);
 }
 
 void	destroy_map(t_data *data)

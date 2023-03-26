@@ -12,24 +12,16 @@
 
 #include "so_long.h"
 
-void	setup_sprites03(t_data *data)
+void	show_mov_count(t_data *data, int mov_count)
 {
-    data->map->sprites->collectible01_02 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible1_02.xpm", &data->px, &data->px);
-    data->map->sprites->collectible01_03 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible1_03.xpm", &data->px, &data->px);
-    data->map->sprites->collectible02_02 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible2_02.xpm", &data->px, &data->px);
-    data->map->sprites->collectible02_03 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible2_03.xpm", &data->px, &data->px);
-    data->map->sprites->collectible03_02 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible03-02.xpm", &data->px, &data->px);
-    data->map->sprites->collectible03_03 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible03-03.xpm", &data->px, &data->px);
-	data->map->sprites->collectible04_02 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible04-02.xpm", &data->px, &data->px);
-	data->map->sprites->collectible04_03 = mlx_xpm_file_to_image(data->mlx_ptr,
-			"./images/collectible04-03.xpm", &data->px, &data->px);
+	char		*mov_count_s;
+
+	ft_printf("\nNumber of movements: %i\n", mov_count);
+	mov_count_s = ft_itoa(mov_count);
+	mlx_put_image_to_window(data->mlx_ptr,
+		data->win_ptr, data->map->sprites->corner_tl, 0, 0);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 5, 17, 0xFFFFFF, mov_count_s);
+	free(mov_count_s);
 }
 
 void	setup_sprites02(t_data *data)
@@ -83,5 +75,4 @@ void	setup_sprites(t_data *data)
 	data->map->sprites->exit = mlx_xpm_file_to_image(data->mlx_ptr,
 			"./images/exit.xpm", &data->px, &data->px);
 	setup_sprites02(data);
-    setup_sprites03(data);
 }

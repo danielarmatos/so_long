@@ -24,22 +24,15 @@ void	display_collectible(t_data *data, int x, int y)
 
 	if (!i)
 		i = 1;
-	//ft_printf("\ni: %i\n", i);
 	if (i == 1)
-	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->map->sprites->collectible, (x * data->px), (y * data->px));
-	}
 	if (i == 2)
-	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->map->sprites->collectible02, (x * data->px), (y * data->px));
-	}
 	if (i == 3)
-	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->map->sprites->collectible03, (x * data->px), (y * data->px));
-	}
 	if (i == 4)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,

@@ -53,7 +53,6 @@ typedef struct s_map
 	int			starting_pos;
 	char		**map_array;
 	char		**map_array_val;
-	int			image_size;
 	int			curr_pos_x;
 	int			curr_pos_y;
 	int			validation_col;

@@ -12,6 +12,26 @@
 
 #include "so_long.h"
 
+void	put_player_image(t_data *data, int x2, int y2, char direction)
+{
+	if (direction == 'u')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->player_up,
+			(x2 * data->px), (y2 * data->px));
+	if (direction == 'd')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->player_down,
+			(x2 * data->px), (y2 * data->px));
+	if (direction == 'l')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->player_left,
+			(x2 * data->px), (y2 * data->px));
+	if (direction == 'r')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->map->sprites->player_right,
+			(x2 * data->px), (y2 * data->px));
+}
+
 void	move_player02(t_data *data, int x, int y)
 {
 	if (data->map->map_array[y][x] == 'L')
@@ -42,7 +62,8 @@ char	move_player(t_data *data, int x2, int y2, char direction)
 	c = data->map->map_array[y2][x2];
 	if (c != '1')
 	{
-		ft_printf("\nNumber of movements: %i\n", ++mov_count);
+		mov_count++;
+		show_mov_count(data, mov_count);
 		move_player02(data, x, y);
 		if (data->map->map_array[y2][x2] != 'E')
 			data->map->map_array[y2][x2] = 'P';
@@ -50,23 +71,7 @@ char	move_player(t_data *data, int x2, int y2, char direction)
 			data->map->map_array[y2][x2] = 'L';
 		data->map->curr_pos_x = x2;
 		data->map->curr_pos_y = y2;
-		if (direction == 'u')
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->map->sprites->player_up,
-				(x2 * data->px), (y2 * data->px));
-		if (direction == 'd')
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->map->sprites->player_down,
-				(x2 * data->px), (y2 * data->px));
-		if (direction == 'l')
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->map->sprites->player_left,
-				(x2 * data->px), (y2 * data->px));
-		if (direction == 'r')
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->map->sprites->player_right,
-				(x2 * data->px), (y2 * data->px));
-		
+		put_player_image(data, x2, y2, direction);
 	}
 	return (c);
 }
