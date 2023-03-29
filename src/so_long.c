@@ -59,7 +59,6 @@ void	so_long(char **argv)
 	setup_map(map);
 	if (validate_map(argv[1], map) == 0)
 	{
-		ft_printf("\nMap is INVALID!\n");
 		free(map);
 		return ;
 	}

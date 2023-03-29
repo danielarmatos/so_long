@@ -11,10 +11,9 @@
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-#CFLAGS = -Wall -Wextra -Werror -g
-MLXFLAGS = -L ./minilibx -lm -lmlx -Ilmlx -lXext -lX11
-DEPS = minilibx/mlx.h libft/libft.a
+CFLAGS = -Wall -Wextra -Werror -g
+MLXFLAGS = -L ./minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
+DEPS = minilibx-linux/mlx.h libft/libft.a
 
 NAME = so_long
 BONUS_NAME = so_long_bonus
@@ -31,13 +30,13 @@ all: deps $(NAME)
 	
 deps:
 	$(MAKE) -C ./libft
-	$(MAKE) -C ./minilibx
+	$(MAKE) -C ./minilibx-linux
 $(NAME): $(OBJ) $(DEPS)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME) -g
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 
 clean:
 	$(MAKE) $@ -C ./libft
-	$(MAKE) $@ -C ./minilibx
+	$(MAKE) $@ -C ./minilibx-linux
 	@rm -rf $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
@@ -48,10 +47,10 @@ bonus: bonus_deps $(BONUS_NAME)
 
 bonus_deps:
 	$(MAKE) -C ./libft
-	$(MAKE) -C ./minilibx
+	$(MAKE) -C ./minilibx-linux
 $(BONUS_NAME): $(BONUS_OBJ) $(DEPS)
-	$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT) $(MLXFLAGS) -o $(BONUS_NAME) -g
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT) $(MLXFLAGS) -o $(BONUS_NAME)
 
 re: fclean all
 	$(MAKE) re -C ./libft
-	$(MAKE) re -C ./minilibx
+	$(MAKE) re -C ./minilibx-linux

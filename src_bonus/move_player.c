@@ -111,7 +111,7 @@ int	key_hook(int key, t_data *data)
 		if (data->map->collected_col == data->map->collectibles)
 		{
 			ft_printf("\n\033[0;32mFinished game successfully!!!\033[0m\n");
-			close_window();
+			close_window(data);
 		}
 	}
 	return (0);

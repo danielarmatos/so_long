@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 # include <stdlib.h>
-# include "../minilibx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -100,10 +100,10 @@ void	display_map(t_data *data);
 void	display_content(t_data *data);
 void	destroy_map(t_data *data);
 int		key_hook(int key, t_data *data);
-int		close_window(void);
+int		close_window(t_data *data);
 void	display_exit(t_data *data, int x, int y);
 void	destroy_map_array(t_map *map);
-int		close_window(void);
+int		close_window(t_data *data);
 void	exit_sprite_anim(t_data *data);
 void	setup_sprites(t_data *data);
 void	collectible_sprite_anim(t_data *data);

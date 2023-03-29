@@ -12,8 +12,9 @@
 
 #include "so_long.h"
 
-int	close_window(void)
+int	close_window(t_data *data)
 {
+	destroy_map(data);
 	exit (0);
 	return (0);
 }
