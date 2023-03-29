@@ -108,5 +108,6 @@ void	exit_sprite_anim(t_data *data);
 void	setup_sprites(t_data *data);
 void	collectible_sprite_anim(t_data *data);
 void	show_mov_count(t_data *data, int mov_count);
+int		validate_characters(char *line);
 
 #endif

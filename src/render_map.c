@@ -15,10 +15,7 @@
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
+		close_window(data);
 	return (0);
 }
 
@@ -66,7 +63,6 @@ int	render_map(t_map *map)
 		StructureNotifyMask, &close_window, data);
 	mlx_key_hook(data->win_ptr, &key_hook, data);
 	mlx_loop(data->mlx_ptr);
-	ft_printf("Destroy map\n");
 	destroy_map(data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);

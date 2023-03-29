@@ -15,11 +15,7 @@
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-	{
 		close_window(data);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
 	return (0);
 }
 
@@ -59,7 +55,7 @@ int	init_render_map(t_map *map, t_data *data)
 			&data->img.line_len, &data->img.endian);
 	return (1);
 }
-0
+
 int	render_map(t_map *map)
 {
 	t_data	*data;
@@ -76,8 +72,7 @@ int	render_map(t_map *map)
 		StructureNotifyMask, &close_window, data);
 	mlx_key_hook(data->win_ptr, &key_hook, data);
 	mlx_loop(data->mlx_ptr);
-	//destroy_map(data);
-	ft_printf("==end==");
+	destroy_map(data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->map->map_array);

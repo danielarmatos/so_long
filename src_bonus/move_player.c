@@ -80,6 +80,7 @@ char	check_key(int key, t_data *data)
 {
 	char	c;
 
+	c = '\0';
 	if ((key == 119 || key == 65362))
 		c = move_player(data, data->map->curr_pos_x,
 				(data->map->curr_pos_y - 1), 'u');

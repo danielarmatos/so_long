@@ -14,8 +14,18 @@
 
 int	close_window(t_data *data)
 {
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	data->win_ptr = NULL;
 	destroy_map(data);
-	exit (0);
+	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->map->map_array);
+	free(data->map->map_array_val);
+	free(data->map->sprites);
+	free(data->map);
+	free(data->mlx_ptr);
+	free(data);
+	exit (1);
 	return (0);
 }
 
