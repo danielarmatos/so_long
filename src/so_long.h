@@ -92,5 +92,6 @@ int		close_window(t_data *data);
 void	display_exit(t_data *data, int x, int y);
 void	destroy_map_array(t_map *map);
 int		close_window(t_data *data);
+int		validate_characters(char *line);
 
 #endif

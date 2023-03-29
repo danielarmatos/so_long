@@ -12,6 +12,22 @@
 
 #include "so_long.h"
 
+int	validate_characters(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '0' || line[i] == '1' || line[i] == 'C'
+			|| line[i] == 'E' || line[i] == 'P' || line[i] == '\n')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 void	setup_map(t_map *map)
 {
 	map->width = 0;
